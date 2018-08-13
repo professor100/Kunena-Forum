@@ -1978,7 +1978,14 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			$access = KunenaAccess::getInstance();
 			$hold   = $access->getAllowedHold($user->userid, $this->category_id, false);
 
-			if (!in_array($this->hold, $hold))
+			if ($this->getCategory()->review)
+			{
+				if ($this->first_post_userid == $user->userid)
+				{
+					return;
+				}
+			}
+			elseif (!in_array($this->hold, $hold))
 			{
 				return new KunenaExceptionAuthorise(Text::_('COM_KUNENA_NO_ACCESS'), 403);
 			}
