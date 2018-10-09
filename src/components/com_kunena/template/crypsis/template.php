@@ -84,13 +84,14 @@ class KunenaTemplateCrypsis extends KunenaTemplate
 
 		if ($bootstrap)
 		{
-			$this->addStyleSheet(Uri::base(true) . '/media/jui/css/bootstrap.min.css');
-			$this->addStyleSheet(Uri::base(true) . '/media/jui/css/bootstrap-extended.css');
-			$this->addStyleSheet(Uri::base(true) . '/media/jui/css/bootstrap-responsive.min.css');
+			$doc = JFactory::getDocument();
+			$doc->addStyleSheet(Uri::base(true) . '/media/jui/css/bootstrap.min.css');
+			$doc->addStyleSheet(Uri::base(true) . '/media/jui/css/bootstrap-extended.css');
+			$doc->addStyleSheet(Uri::base(true) . '/media/jui/css/bootstrap-responsive.min.css');
 
 			if ($ktemplate->params->get('icomoon'))
 			{
-				$this->addStyleSheet(Uri::base(true) . '/media/jui/css/icomoon.css');
+				$doc->addStyleSheet(Uri::base(true) . '/media/jui/css/icomoon.css');
 			}
 		}
 
